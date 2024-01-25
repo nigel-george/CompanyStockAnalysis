@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 800px; /* Increase the container width for a more spacious layout */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+        }
+
+        .chart-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 18px;
+            color: #444;
+            margin-top: 20px;
+        }
+        .btn-back {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+        .price-info {
+            font-size: 18px;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        .price-label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .price-value {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .date-value {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>{{ company_name }} Stock Analysis</h1>
+        
+        <div class="chart-container">
+            <img src="data:image/png;base64,{{ chart_base64 }}" alt="Stock Analysis Chart" class="chart-img">
+        </div>
+        <div class="price-info">
+            <span class="price-label">Highest Price:</span>
+            <span class="price-value">${{ highest_price }}</span>
+            <span class="date-value">(on {{ highest_date.strftime('%B %d, %Y') }})</span>
+        </div>
+        <div class="price-info">
+            <span class="price-label">Lowest Price:</span>
+            <span class="price-value">${{ lowest_price }}</span>
+            <span class="date-value">(on {{ lowest_date.strftime('%B %d, %Y') }})</span>
+        </div>
+        <p>{{ explanation }}</p>
+        
+        <a href="/" class="btn-back">Upload other CSV</a>
+    </div>
+</body>
+</html>

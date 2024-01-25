@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upload-btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin: 5px;
+            width: 200px;
+        }
+
+        .upload-btn {
+            background-color: #28a745;
+        }
+
+        .analyze-btn {
+            background-color: #007bff;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .stock-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Company Stock Analysis Dashboard</h1>
+        <div class="image-container">
+            <img src="https://imgs.search.brave.com/QeTQ8uF3DgYbA3HoavOSz4L33YKPHSWhE-zG_xWSLro/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLmZv/b2xjZG4uY29tL21l/ZGlhL2R1YnMvaW1h/Z2VzL1N0b2NrX21h/cmtldF9jaGFydC53/aWR0aC02MDAuanBn" alt="Stock Market" class="stock-image">
+        </div>
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+            <h2>Upload Company CSV Data</h2>
+            <div class="upload-btn-wrapper">
+                <label for="csv-upload" class="btn upload-btn" id="upload-label">Select CSV File</label>
+                <input type="file" id="csv-upload" name="file" style="display: none;" onchange="updateUploadLabel()">
+            </div>
+            <button type="button" class="btn analyze-btn" onclick="analyzeData()">Analyze</button>
+        </form>
+    </div>
+
+    <script>
+        function analyzeData() {
+            alert("Analyzing data...");
+            const form = document.getElementById("upload-form");
+
+            // Submit the form
+            form.submit();
+        }
+        function updateUploadLabel() {
+            const fileInput = document.getElementById("csv-upload");
+            const uploadLabel = document.getElementById("upload-label");
+
+            // Set the label to the selected file's name on hover
+            uploadLabel.textContent = fileInput.files[0] ? fileInput.files[0].name : "Select CSV File";
+        }
+    </script>
+</body>
+</html>
